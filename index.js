@@ -28,13 +28,15 @@ client.on('messageCreate', (message) => {
 
 client.login(process.env.TOKEN);
 
-try {
-    const results = await query('SELECT * FROM User');
+(async () => {
+    try {
+        const results = await query('SELECT * FROM User');
 
-    console.log(results);
-} catch (error) {
-    console.log(error);
-};
+        console.log(results);
+    } catch (error) {
+        console.log(error);
+    };
+})();
 
 // const rest = new REST({ version: '14.15.3' }).setToken(process.env.TOKEN);
 
