@@ -1,4 +1,5 @@
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField, REST, Routes } = require('discord.js');
+const query = require('query.js');
 
 const client = new Client({
     intents: [
@@ -14,40 +15,33 @@ client.on('ready', (c) => {
 });
 
 client.on('messageCreate', (message) => {
-    console.log(message)
+    if (message.author.bot) return;
+
+
 });
 
 client.login(process.env.TOKEN);
 
-const mysql = require('mysql2');
+try {
+    const results = query('SELECT * FROM User');
 
-// Create a connection to the database
-const connection = mysql.createConnection({
-    host: 'db-buf-05.sparkedhost.us',
-    port: 3306, // Default port for MySQL
-    user: 'u143949_Wv5pkUs1q6',
-    password: 'sxN86zmnsvC+gRVGnz+lvTKx',
-    database: 's143949_puppy-bot'
+    console.log(results);
+} catch (error) {
+    console.log(error);
+};
+
+client.guilds.cache.forEach(guild => {
+    console.log(`${guild.name} | ${guild.id}`);
 });
 
-// Connect to the database
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.stack);
-        return;
-    }
-    console.log('Connected to the MySQL database.');
-});
+console.log(`bot id: ${client.user.id}`);
 
-// Example query
-connection.query('SELECT * FROM `User`', (err, results, fields) => {
-    if (err) {
-        console.error('Error executing query:', err.stack);
-        return;
-    }
-    console.log('Query results:', results);
-});
+// const rest = new REST({ version: '14.15.3' }).setToken(process.env.TOKEN);
 
-// Close the connection when done
-// You should manage connection pooling and closing based on your application's needs
-connection.end();
+// try {
+//     await rest.put(
+//         Routes.applicationGuildCommands(client.user.id)
+//     )
+// } catch (error) {
+//     console.log(`There was an error: ${error}`)
+// }
