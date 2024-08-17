@@ -1,1 +1,1 @@
-console.log('YO')
+console.log('DIE')
