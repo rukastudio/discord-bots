@@ -12,6 +12,12 @@ const client = new Client({
 
 client.on('ready', (c) => {
     console.log(`${c.user.tag} is online.`);
+
+    client.guilds.cache.forEach(guild => {
+        console.log(`${guild.name} | ${guild.id}`);
+    });
+
+    console.log(`bot id: ${client.use.id}`);
 });
 
 client.on('messageCreate', (message) => {
@@ -23,18 +29,12 @@ client.on('messageCreate', (message) => {
 client.login(process.env.TOKEN);
 
 try {
-    const results = query('SELECT * FROM User');
+    const results = await query('SELECT * FROM User');
 
     console.log(results);
 } catch (error) {
     console.log(error);
 };
-
-client.guilds.cache.forEach(guild => {
-    console.log(`${guild.name} | ${guild.id}`);
-});
-
-console.log(`bot id: ${client.user}`);
 
 // const rest = new REST({ version: '14.15.3' }).setToken(process.env.TOKEN);
 
