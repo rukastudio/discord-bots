@@ -34,7 +34,7 @@ client.guilds.cache.forEach(guild => {
     console.log(`${guild.name} | ${guild.id}`);
 });
 
-console.log(`bot id: ${client.user.id}`);
+console.log(`bot id: ${client.user}`);
 
 // const rest = new REST({ version: '14.15.3' }).setToken(process.env.TOKEN);
 
