@@ -1,5 +1,5 @@
 const { Client, IntentsBitField, REST, Routes } = require('discord.js');
-const query = require('query.js');
+const query = require('./query.js');
 
 const client = new Client({
     intents: [
