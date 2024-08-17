@@ -1,6 +1,6 @@
 import { Client, IntentsBitField } from 'discord.js';
 
-const client: Client = new Client({
+const client = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
         IntentsBitField.Flags.GuildMembers,
