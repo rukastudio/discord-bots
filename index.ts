@@ -1,1 +1,1 @@
-console.log('DIE')
+console.log('DIE 999 TIMES')
