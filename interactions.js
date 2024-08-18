@@ -34,8 +34,6 @@ interactions.gift = async function (interaction) {
     const otherUser = interaction.options.get('user').user;
     const amount = interaction.options.get('amount').value;
 
-    console.log(`amount: ${amount}`);
-
     if (user === otherUser) {
         interaction.reply('You cannot gift yourself Puppy Points.');
 
