@@ -6,7 +6,7 @@ interactions.pp = async function (interaction) {
     const user = member && member.user || interaction.user
 
     if (user.bot) {
-        interaction.reply(`<@${user.id}> is not able to have Puppy Points.`);
+        interaction.reply(`<@${user.id}> simply cannot have ANY Puppy Points wanwan :C`);
 
         return;
     }
