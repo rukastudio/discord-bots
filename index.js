@@ -1,5 +1,8 @@
-const { Client, IntentsBitField, REST, Routes } = require('discord.js');
-const query = require('./query.js');
+require('dotenv').config();
+
+const { Client, IntentsBitField } = require('discord.js');
+const registerCommands = require('./registerCommands.js');
+const interactions = require('./interactions.js');
 
 const client = new Client({
     intents: [
@@ -13,11 +16,9 @@ const client = new Client({
 client.on('ready', (c) => {
     console.log(`${c.user.tag} is online.`);
 
-    client.guilds.cache.forEach(guild => {
-        console.log(`${guild.name} | ${guild.id}`);
-    });
+    registerCommands(client);
 
-    console.log(`bot id: ${client.use.id}`);
+    console.log(`Bot ID: ${client.user.id}`);
 });
 
 client.on('messageCreate', (message) => {
@@ -26,24 +27,18 @@ client.on('messageCreate', (message) => {
 
 });
 
-client.login(process.env.TOKEN);
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isCommand()) return;
 
-(async () => {
     try {
-        const results = await query('SELECT * FROM User');
+        const command = interactions[interaction.commandName];
 
-        console.log(results);
+        if (command) {
+            await command(interaction)
+        }
     } catch (error) {
-        console.log(error);
-    };
-})();
+        interaction.reply(`Something went wrong while trying to reach Puppy Bot. Try again later`);
+    }
+});
 
-// const rest = new REST({ version: '14.15.3' }).setToken(process.env.TOKEN);
-
-// try {
-//     await rest.put(
-//         Routes.applicationGuildCommands(client.user.id)
-//     )
-// } catch (error) {
-//     console.log(`There was an error: ${error}`)
-// }
+client.login(process.env.TOKEN);
