@@ -29,6 +29,18 @@ const commands = [
                 required: true
             }
         ]
+    },
+    {
+        name: 'gamble',
+        description: 'Gamble you Puppy Points with a 50% chance to double it.',
+        options: [
+            {
+                name: 'amount',
+                description: 'The amount of Puppy Points that you will gamble with.',
+                type: ApplicationCommandOptionType.Integer,
+                required: true
+            }
+        ]
     }
 ];
 

@@ -76,4 +76,8 @@ interactions.gift = async function (interaction) {
     }
 }
 
+interactions.gamble = async function(interaction) {
+
+}
+
 module.exports = interactions
