@@ -56,8 +56,15 @@ db.giftpp = async function (userId, otherUserId, amount) {
     } catch (error) {
         console.error('Error updating Puppy Points:', error);
     }
-};
+}
 
+db.subtractpp = async function(userId, amount) {
+
+}
+
+db.addpp = async function(userId, amount) {
+
+}
 
 
 module.exports = db;

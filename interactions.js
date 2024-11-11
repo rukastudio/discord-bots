@@ -1,6 +1,24 @@
 const interactions = {}
 const db = require('./db.js');
 
+function getAmount(interaction) {
+    const amount = interaction.options.get('amount').value;
+
+    if (amount <= 0) {
+        interaction.reply(`You have to gift atleast more than 0 Puppy Points.`);
+
+        return;
+    }
+
+    if (amount % 1 !== 0) {
+        interaction.reply(`Provide a whole number as the amount of Puppy Points.`);
+
+        return;
+    }
+
+    return amount;
+}
+
 interactions.pp = async function (interaction) {
     const member = interaction.options.get('user');
     const user = member && member.user || interaction.user
@@ -32,22 +50,12 @@ interactions.pp = async function (interaction) {
 interactions.gift = async function (interaction) {
     const user = interaction.user;
     const otherUser = interaction.options.get('user').user;
-    const amount = interaction.options.get('amount').value;
+    const amount = getAmount(interaction);
+
+    if (amount === null) return;
 
     if (user === otherUser) {
         interaction.reply('You cannot gift yourself Puppy Points.');
-
-        return;
-    }
-
-    if (amount <= 0) {
-        interaction.reply(`You have to gift atleast more than 0 Puppy Points.`);
-
-        return;
-    }
-
-    if (amount % 1 !== 0) {
-        interaction.reply(`Provide a whole number as the amount of Puppy Points.`);
 
         return;
     }
@@ -77,7 +85,18 @@ interactions.gift = async function (interaction) {
 }
 
 interactions.gamble = async function(interaction) {
+    const user = interaction.user;
+    const amount = getAmount(interaction);
 
+    if (amount === null) return;
+
+    const outcome = Math.random() < 0.5;
+
+    if (outcome === true)  {
+        
+    } else if(outcome === false) {
+
+    }
 }
 
 module.exports = interactions

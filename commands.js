@@ -32,7 +32,7 @@ const commands = [
     },
     {
         name: 'gamble',
-        description: 'Gamble you Puppy Points with a 50% chance to double it.',
+        description: 'Gamble your Puppy Points with a 50% chance to double the amount.',
         options: [
             {
                 name: 'amount',
