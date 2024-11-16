@@ -16,6 +16,6 @@ const sequelize = new sequelize_typescript_1.Sequelize({
     host: process.env.DATABASE_HOST, // Database host from .env
     port: Number(process.env.DATABASE_PORT), // Database port from .env
     dialect: 'mysql', // or 'mysql', 'mariadb', etc.
-    models: [path_1.default.join(__dirname, "../bots/**/models/*.ts")], // Load models
+    models: [path_1.default.join(__dirname, "../bots/**/data/models/*.ts")], // Load models
 });
 exports.default = sequelize;
