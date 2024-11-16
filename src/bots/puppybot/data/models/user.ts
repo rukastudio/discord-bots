@@ -2,7 +2,7 @@
 import { Model, Table, Column, DataType } from 'sequelize-typescript';
 
 @Table({
-    schema: 'puppy-bot',              // The schema within the database for Bot 1
+    schema: 'puppybot',              // The schema within the database for Bot 1
     tableName: 'users',          // Table name within the schema
 })
 export class User extends Model {

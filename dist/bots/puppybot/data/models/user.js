@@ -35,7 +35,7 @@ __decorate([
 ], User.prototype, "points", void 0);
 exports.User = User = __decorate([
     (0, sequelize_typescript_1.Table)({
-        schema: 'puppy-bot', // The schema within the database for Bot 1
+        schema: 'puppybot', // The schema within the database for Bot 1
         tableName: 'users', // Table name within the schema
     })
 ], User);
